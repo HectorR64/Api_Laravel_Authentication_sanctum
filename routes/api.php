@@ -16,14 +16,6 @@ use App\Http\Controllers\UserController;
 |
 */
 
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-
-//    Route::post('/logout', [AuthController::class, 'logout']);
-
-//    Route::apiResource('/users', UserController::class);
-//    return $request->user();
-//});
-
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/logout', [AuthController::class, 'logout']);
@@ -36,8 +28,5 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 
-Route::controller(AuthController::class)->group(function(){
-    Route::post('/signup', 'signup');
-    Route::post('/login', 'login');
-    
-});
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
